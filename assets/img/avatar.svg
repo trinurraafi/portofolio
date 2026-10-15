@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#818cf8"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="200" rx="32" fill="url(#bgGrad)"/>
+  <circle cx="100" cy="82" r="36" fill="url(#accentGrad)" opacity="0.9"/>
+  <path d="M42 178 C42 136 158 136 158 178" fill="url(#accentGrad)" opacity="0.85"/>
+  <text x="100" y="92" font-family="system-ui, sans-serif" font-size="26" font-weight="800" fill="#0f172a" text-anchor="middle">TNR</text>
+</svg>

@@ -1,7 +1,7 @@
 # Portofolio Tri Nur Raafi 🚀
-*(Terinspirasi dari estetika & interaksi xaviera.dtechkit.my.id)*
+*(xaviera.dtechkit.my.id)*
 
-Project ini dirancang khusus agar ringan, modular, dan siap langsung dibuka/diedit di **Antigravity IDE** atau kode editor favoritmu tanpa perlu install `node_modules` yang berat.
+Project ini dirancang khusus agar ringan, modular, dan siap langsung dibuka/diedit di **Antigravity IDE**.
 
 ## 📂 Struktur Folder
 ```text
@@ -28,8 +28,3 @@ raafi-portfolio/
    - **SchoolFin**: Sistem Manajemen Keuangan & Pembayaran SPP Sekolah PHP & MySQL (dilengkapi *ledger* transaksi & jurnal otomatis).
    - **Nexora AI**: Modern AI Assistant berbasis Google Gemini API (dilengkapi live streaming token & Google Search grounding).
 5. **Playground Widget (AI Token & Word Estimator)**: Alat hitung cepat jumlah kata, karakter, dan estimasi *token* LLM secara *real-time*.
-
-## 🛠️ Cara Buka di Antigravity IDE
-1. Buka folder `raafi-portfolio` di **Antigravity IDE**.
-2. Jalankan `index.html` menggunakan **Live Server** atau buka langsung di browser.
-3. Foto profil disimpan di `assets/img/profile.jpg` dan artwork musik di `assets/img/music-cover.jpg`.

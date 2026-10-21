@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#090d16" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <title>Tri Nur Raafi — Web Developer &amp; Creative Maker</title>
+  <meta name="description" content="Portofolio Tri Nur Raafi — Web Developer, System Architect, dan Creative Maker dari Kuningan, Indonesia." />
+
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" href="assets/img/profile.jpg" />
+
+  <!-- Open Graph / Social Sharing (WhatsApp, Telegram, LinkedIn) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Tri Nur Raafi — Web Developer &amp; Creative Maker" />
+  <meta property="og:description" content="Portofolio Tri Nur Raafi — Web Developer, System Architect, dan Creative Maker dari Kuningan, Indonesia." />
+  <meta property="og:image" content="assets/img/profile.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400;1,500;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <!-- Ambient Background Canvas -->
+  <canvas id="ambientCanvas" aria-hidden="true"></canvas>
+  <div class="ambient-orb orb-1" aria-hidden="true"></div>
+  <div class="ambient-orb orb-2" aria-hidden="true"></div>
+
+  <!-- Floating Navigation -->
+  <header class="navbar-wrapper">
+    <nav class="navbar" aria-label="Main navigation">
+      <div class="nav-location">
+        <svg class="pin-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+        <span>KUNINGAN, ID</span>
+      </div>
+
+      <div class="nav-center">
+        <a href="#top" class="nav-avatar-link" aria-label="Tri Nur Raafi — Home">
+          <img src="assets/img/profile.jpg" alt="Tri Nur Raafi" class="nav-avatar" />
+        </a>
+        <div class="status-badge">
+          <span class="status-dot"></span>
+          <span>Available for projects</span>
+        </div>
+        <span class="nav-divider"></span>
+        <div class="nav-links">
+          <a href="#work">Work</a>
+          <a href="#about">About</a>
+          <a href="#certificates">Certificates</a>
+          <a href="#playground">Playground</a>
+          <a href="#contact" class="btn-nav-cta">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle;margin-right:4px;"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m3 7 9 6 9-6"/></svg>
+            <span>Work with me</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="nav-actions">
+        <button id="themeToggle" class="icon-btn" aria-label="Toggle Light/Dark Mode" title="Ganti Tema">
+          <svg class="theme-icon-dark" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9z"/></svg>
+          <svg class="theme-icon-light" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+        </button>
+        <button id="mobileMenuBtn" class="icon-btn mobile-only" aria-label="Open Navigation">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <dialog id="mobileNavDialog" class="mobile-dialog">
+    <div class="mobile-dialog-inner">
+      <div class="mobile-dialog-header">
+        <span class="mono-label">A LITTLE EXPLORING</span>
+        <button id="closeMobileMenuBtn" class="icon-btn" aria-label="Close menu">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <nav class="mobile-nav-list">
+        <a href="#work" class="mobile-nav-item">
+          <span><small>01</small> Selected Work</span>
+          <span>↗</span>
+        </a>
+        <a href="#about" class="mobile-nav-item">
+          <span><small>02</small> About Me</span>
+          <span>↗</span>
+        </a>
+        <a href="#certificates" class="mobile-nav-item">
+          <span><small>03</small> Certificates &amp; Awards</span>
+          <span>↗</span>
+        </a>
+        <a href="#playground" class="mobile-nav-item">
+          <span><small>04</small> Playground</span>
+          <span>↗</span>
+        </a>
+        <a href="#contact" class="mobile-nav-item">
+          <span><small>05</small> Coming Soon WhatsApp</span>
+          <span>↗</span>
+        </a>
+      </nav>
+      <div class="mobile-dialog-footer">
+        <span class="status-badge"><span class="status-dot"></span> Available for projects</span>
+        <span class="mono-label">KUNINGAN, ID</span>
+      </div>
+    </div>
+  </dialog>
+
+  <main id="top">
+    <!-- HERO SECTION -->
+    <section class="hero-section container">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <div class="eyebrow-pill">
+            <span class="spark-dot"></span>
+            <span>Hello, I’m Tri Nur Raafi</span>
+          </div>
+
+          <h1 class="hero-title">
+            <span class="sr-only">Tri Nur Raafi, Web Developer & Creative Maker in Kuningan, Indonesia — </span>
+            Developer who <br />
+            <span class="rotating-words-wrapper" aria-live="polite">
+              <span id="rotatingWord" class="rotating-word serif-italic">Builds</span>
+            </span>
+          </h1>
+
+          <p class="hero-subtitle">
+            Siswa <strong>RPL (Rekayasa Perangkat Lunak)</strong> di SMK Pertiwi Kuningan yang hobi merancang arsitektur sistem, membangun aplikasi web full-stack, dan bereksperimen dengan AI &amp; visual kreatif.
+          </p>
+
+          <div class="hero-bottom-bar">
+            <span class="mono-label">SYSTEMS / WEB DEV / AI PROMPTING</span>
+            <a href="#work" class="btn-explore">
+              Explore selected work <span class="arrow-down">↓</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Retro Skeuomorphic Capsule Twin-Vinyl Music Player -->
+        <div class="hero-music-card">
+          <div class="retro-capsule-player" id="vinylPlayer" role="region" aria-label="Retro Vinyl Music Player">
+            <!-- Left Vinyl Disc -->
+            <div class="capsule-vinyl-well left-well">
+              <div class="capsule-vinyl-disc" id="vinylDiscLeft" aria-hidden="true">
+                <div class="vinyl-grooves"></div>
+                <div class="vinyl-sheen"></div>
+                <div class="vinyl-label-brass">
+                  <div class="vinyl-center-hole"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Center Deck -->
+            <div class="capsule-center-deck">
+              <div class="capsule-track-info">
+                <div class="capsule-track-title" id="trackTitle">Sekian, Terima Kasih</div>
+                <div class="capsule-track-artist" id="trackArtist">Lealona &amp; The Jeblogs</div>
+              </div>
+
+              <!-- Retro Slider Bar -->
+              <div class="capsule-slider-wrap">
+                <div class="capsule-slider-track" id="progressContainer" role="slider" aria-label="Seek track" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" tabindex="0">
+                  <div class="capsule-slider-fill" id="progressBar"></div>
+                  <div class="capsule-slider-thumb" id="sliderThumb"></div>
+                </div>
+                <div class="capsule-time-row">
+                  <span id="currentTime" class="mono-time">0:00</span>
+                  <span id="totalDuration" class="mono-time">-:-</span>
+                </div>
+              </div>
+
+              <!-- Controls: Prev, Play/Pause, Next -->
+              <div class="capsule-controls">
+                <button id="prevTrackBtn" class="capsule-skip-btn" aria-label="Previous Track" title="Lagu sebelumnya">
+                  <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor">
+                    <polygon points="19 20 9 12 19 4 19 20" />
+                    <line x1="5" y1="19" x2="5" y2="5" stroke="currentColor" stroke-width="2.5" />
+                  </svg>
+                </button>
+                <button id="playPauseBtn" class="capsule-play-btn" aria-label="Play or Pause Track">
+                  <svg id="playIconSvg" viewBox="0 0 24 24" class="capsule-play-icon" fill="currentColor">
+                    <polygon points="8 5 19 12 8 19 8 5" />
+                  </svg>
+                </button>
+                <button id="nextTrackBtn" class="capsule-skip-btn" aria-label="Next Track" title="Lagu berikutnya">
+                  <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor">
+                    <polygon points="5 4 15 12 5 20 5 4" />
+                    <line x1="19" y1="5" x2="19" y2="19" stroke="currentColor" stroke-width="2.5" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- Right Vinyl Disc -->
+            <div class="capsule-vinyl-well right-well">
+              <div class="capsule-vinyl-disc" id="vinylDiscRight" aria-hidden="true">
+                <div class="vinyl-grooves"></div>
+                <div class="vinyl-sheen"></div>
+                <div class="vinyl-label-brass">
+                  <div class="vinyl-center-hole"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 01 / SELECTED WORK SECTION -->
+    <section id="work" class="work-section container">
+      <div class="section-topbar">
+        <span class="mono-label"><span class="accent-dot">●</span> A FEW THINGS I’VE BEEN MAKING</span>
+        <span class="mono-label">01 / SELECTED WORK</span>
+      </div>
+
+      <header class="section-header">
+        <h2 class="section-title">
+          Thoughtfully engineered.<br />
+          <span class="serif-italic">Purposefully functional.</span>
+        </h2>
+        <div class="section-header-desc">
+          <p>
+            Sedikit strategi sistem, banyak rasa ingin tahu.<br />
+            Mengubah masalah nyata di lapangan menjadi aplikasi web dan karya visual yang rapi, terstruktur, dan mudah dipakai.
+          </p>
+          <span class="mono-tag">SARANACARE · SCHOOLFIN · NEXORA AI</span>
+        </div>
+      </header>
+
+      <div class="projects-grid">
+        <!-- Project 1: SaranaCare -->
+        <article class="project-card" data-project="saranacare" tabindex="0" role="button" aria-label="Lihat detail proyek SaranaCare">
+          <div class="project-preview preview-saranacare">
+            <div class="mock-window">
+              <div class="mock-dots">
+                <span></span><span></span><span></span>
+                <span class="mock-window-url">saranacare.smkpertiwi.sch.id</span>
+              </div>
+              <div class="project-img-wrapper">
+                <img src="assets/img/saranacare.png" alt="Tampilan Antarmuka Aplikasi SaranaCare SMK Pertiwi Kuningan" class="project-img" loading="lazy" />
+              </div>
+            </div>
+          </div>
+          <div class="project-info">
+            <div>
+              <span class="mono-label">SYSTEM ARCHITECTURE / WEB APP</span>
+              <h3 class="project-name">SaranaCare</h3>
+              <p class="project-tagline">Sistem Pengaduan Fasilitas Sekolah Terpadu dengan alur tiket transparan &amp; pelacakan real-time.</p>
+            </div>
+            <span class="project-pill">ERD &amp; SWIMLANE → FULL-STACK</span>
+          </div>
+        </article>
+
+        <!-- Project 2: SchoolFin -->
+        <article class="project-card" data-project="schoolfin" tabindex="0" role="button" aria-label="Lihat detail proyek SchoolFin">
+          <div class="project-preview preview-schoolfin">
+            <div class="mock-window">
+              <div class="mock-dots">
+                <span></span><span></span><span></span>
+                <span class="mock-window-url">schoolfin.internal/dashboard</span>
+              </div>
+              <div class="project-img-wrapper">
+                <img src="assets/img/schoolfin.png" alt="Tampilan Dashboard Keuangan &amp; SPP SchoolFin" class="project-img" loading="lazy" />
+              </div>
+            </div>
+          </div>
+          <div class="project-info">
+            <div>
+              <span class="mono-label">FINANCIAL SYSTEM / WEB APP</span>
+              <h3 class="project-name">SchoolFin</h3>
+              <p class="project-tagline">Sistem Manajemen Keuangan &amp; Pembayaran SPP Sekolah dengan rekap neraca otomatis.</p>
+            </div>
+            <span class="project-pill">PHP PDO · MYSQL · MIDTRANS READY</span>
+          </div>
+        </article>
+
+        <!-- Project 3: Nexora AI -->
+        <article class="project-card" data-project="nexora" tabindex="0" role="button" aria-label="Lihat detail proyek Nexora AI">
+          <div class="project-preview preview-nexora">
+            <div class="mock-window">
+              <div class="mock-dots">
+                <span></span><span></span><span></span>
+                <span class="mock-window-url">nexora.ai</span>
+              </div>
+              <div class="project-img-wrapper">
+                <img src="assets/img/nexora.png" alt="Tampilan Platform Nexora AI Assistant" class="project-img" loading="lazy" />
+              </div>
+            </div>
+          </div>
+          <div class="project-info">
+            <div>
+              <span class="mono-label">CREATIVE AI / MODERN AI ASSISTANT</span>
+              <h3 class="project-name">Nexora AI</h3>
+              <p class="project-tagline">Platform AI Assistant responsif bertenaga Google Gemini API &amp; Web Search Grounding.</p>
+            </div>
+            <span class="project-pill">GEMINI API · FIRESTORE · STREAMING</span>
+          </div>
+        </article>
+      </div>
+
+      <div class="section-bottom-note">
+        <span>Klik kartu proyek di atas untuk melihat bedahan arsitektur &amp; simulasi UI interaktif.</span>
+        <a href="#top" class="link-arrow">Back to top ↑</a>
+      </div>
+    </section>
+
+    <!-- INTERACTIVE PROJECT MODAL (Xaviera Forma-style) -->
+    <dialog id="projectModal" class="project-modal">
+      <div class="modal-container">
+        <div class="modal-header">
+          <span id="modalCategory" class="mono-label">CATEGORY</span>
+          <button id="closeModalBtn" class="icon-btn" aria-label="Tutup detail proyek">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          </button>
+        </div>
+
+        <h2 id="modalTitle" class="modal-title">Nama Proyek</h2>
+        <p id="modalSubtitle" class="modal-subtitle">Deskripsi singkat proyek.</p>
+
+        <!-- Interactive Mockup Inside Modal -->
+        <div id="modalInteractivePreview" class="modal-ui-showcase"></div>
+
+        <div class="modal-details-grid">
+          <div class="modal-detail-block">
+            <h3>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color:var(--accent-primary);"><path d="M9 18h6"></path><path d="M10 22h4"></path><path d="M12 2a7 7 0 0 0-7 7c0 2.5 1.5 4.5 3 6h8c1.5-1.5 3-3.5 3-6a7 7 0 0 0-7-7z"></path></svg>
+              The Idea
+            </h3>
+            <p id="modalIdea"></p>
+          </div>
+          <div class="modal-detail-block">
+            <h3>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color:var(--accent-warm);"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+              The Approach
+            </h3>
+            <p id="modalApproach"></p>
+          </div>
+        </div>
+
+        <div class="modal-footer-meta">
+          <div>
+            <span class="mono-label">ROLE &amp; TECH STACK</span>
+            <p id="modalTech" class="modal-tech-text"></p>
+          </div>
+          <a href="#contact" id="modalDiscussBtn" class="btn-primary">Diskusikan Proyek Serupa ↗</a>
+        </div>
+      </div>
+    </dialog>
+
+    <!-- 02 / ABOUT ME SECTION -->
+    <section id="about" class="about-section container">
+      <div class="section-topbar">
+        <span class="mono-label"><span class="accent-dot">●</span> THE PERSON BEHIND THE CODE</span>
+        <span class="mono-label">02 / A LITTLE ABOUT ME</span>
+      </div>
+
+      <div class="about-grid">
+        <!-- Polaroid Card -->
+        <div class="polaroid-wrapper">
+          <span class="sparkle-deco" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2 7 7 2-7 2-2 7-2-7-7-2 7-2z"></path></svg>
+          </span>
+          <figure class="polaroid-card">
+            <div class="polaroid-img-box">
+              <img src="assets/img/profile.jpg" alt="Tri Nur Raafi" />
+            </div>
+            <figcaption>
+              Hi, I’m Raafi
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-2px; margin-left:3px;"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg>
+            </figcaption>
+          </figure>
+          <div class="polaroid-meta">
+            <span>Rekayasa Perangkat Lunak</span>
+            <span class="mono-label">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-1px; margin-right:3px;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              KUNINGAN, JAWA BARAT
+            </span>
+          </div>
+        </div>
+
+        <!-- Bio Content -->
+        <div class="about-text">
+          <p class="mono-label">DEVELOPER. SYSTEM THINKER. ALWAYS CURIOUS.</p>
+          <h2 class="section-title">
+            Curious mind.<br />
+            <span class="serif-italic">Structured builder.</span>
+          </h2>
+          <p>
+            Gue tertarik pada titik temu antara logika sistem yang rapi dan tampilan antarmuka yang nyaman dipakai. Buat gue, bikin aplikasi web bukan cuma soal nulis baris kode, tapi gimana merancang alur data (mulai dari <em>ERD</em>, <em>swimlane</em>, sampai <em>state machine</em>) supaya masalah beneran selesai.
+          </p>
+          <p>
+            Fokus utama gue saat ini adalah pengembangan web dengan <strong>HTML, CSS, JavaScript, PHP, dan MySQL</strong>, sekaligus mengeksplorasi integrasi AI API dan pembuatan konten kreatif berbasis <em>prompt engineering</em>.
+          </p>
+          <div class="intention-quote">
+            <span>↳</span> Disiplin budaya kerja, problem-solving terukur, dan eksekusi yang bersih.
+          </div>
+        </div>
+      </div>
+
+      <div class="pillars-header">
+        <span class="mono-label">WHAT I BRING TO THE TABLE</span>
+        <span class="serif-italic">A mix of logic, structure, and craft.</span>
+      </div>
+
+      <div class="pillars-grid">
+        <article class="pillar-card">
+          <div class="pillar-top">
+            <span class="pillar-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+            </span>
+            <span class="mono-label">01</span>
+          </div>
+          <h3>System Architecture</h3>
+          <p>Merancang alur kerja aplikasi dari nol menggunakan Swimlane Flowchart, State Machine Diagram, dan skema database relasional (ERD) yang solid.</p>
+        </article>
+
+        <article class="pillar-card">
+          <div class="pillar-top">
+            <span class="pillar-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+            </span>
+            <span class="mono-label">02</span>
+          </div>
+          <h3>Full-Stack Web Craft</h3>
+          <p>Membangun aplikasi web responsif menggunakan HTML5, CSS3, JavaScript modern, serta backend PHP &amp; MySQL dengan konfigurasi server yang optimal.</p>
+        </article>
+
+        <article class="pillar-card">
+          <div class="pillar-top">
+            <span class="pillar-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="14" x2="23" y2="14"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="14" x2="4" y2="14"></line></svg>
+            </span>
+            <span class="mono-label">03</span>
+          </div>
+          <h3>AI &amp; Creative Workflow</h3>
+          <p>Mengoptimalkan LLM API routing, manajemen token, serta merancang template prompt presisi untuk produksi animasi 3D dan aset visual resolusi tinggi.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- 03 / CERTIFICATIONS & AWARDS SECTION -->
+    <section id="certificates" class="certificates-section container">
+      <div class="section-topbar">
+        <span class="mono-label"><span class="accent-dot">●</span> VERIFIED CREDENTIALS &amp; ACHIEVEMENTS</span>
+        <span class="mono-label">03 / CERTIFICATIONS &amp; AWARDS</span>
+      </div>
+
+      <header class="section-header">
+        <h2 class="section-title">
+          Validated skills.<br />
+          <span class="serif-italic">Proven competencies.</span>
+        </h2>
+        <div class="section-header-desc">
+          <p>
+            Bukti nyata dedikasi dan pengakuan dalam kompetisi kejuruan teknologi, eksplorasi kecerdasan buatan (AI), serta kesiapan profesional industri digital.
+          </p>
+          <span class="mono-tag">LKS SMK · AI COMPUTER VISION · TELKOM CORPU</span>
+        </div>
+      </header>
+
+      <!-- Category Filter Pills -->
+      <div class="cert-filter-bar" role="tablist" aria-label="Filter Sertifikat">
+        <button class="cert-filter-btn active" data-filter="all" role="tab" aria-selected="true">
+          <span>Semua</span>
+          <span class="cert-filter-count">3</span>
+        </button>
+        <button class="cert-filter-btn" data-filter="prestasi" role="tab" aria-selected="false">
+          <span>Prestasi &amp; Kompetisi</span>
+          <span class="cert-filter-count">2</span>
+        </button>
+        <button class="cert-filter-btn" data-filter="webinar" role="tab" aria-selected="false">
+          <span>Webinar &amp; Industri</span>
+          <span class="cert-filter-count">1</span>
+        </button>
+      </div>
+
+      <!-- Certificates Grid -->
+      <div class="certificates-grid">
+        <!-- Certificate 1: Juara 3 LKS SMK -->
+        <article class="cert-card" data-category="prestasi" data-cert="lks-smk" tabindex="0" role="button" aria-label="Lihat detail Sertifikat Juara 3 LKS Tingkat Sekolah">
+          <div class="cert-preview">
+            <div class="mock-window">
+              <div class="mock-dots">
+                <span></span><span></span><span></span>
+                <span class="mock-window-url">smkpertiwi.sch.id/lks-2026/award</span>
+              </div>
+              <div class="cert-img-wrapper">
+                <img src="assets/img/certificates/cert-juara-lks-smk.jpg" alt="Piagam Juara 3 LKS Tingkat Sekolah — Tri Nur Raafi" class="cert-img" loading="lazy" />
+                <div class="cert-overlay">
+                  <span class="cert-zoom-btn">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+                    Lihat Sertifikat
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="cert-info">
+            <div class="cert-header-meta">
+              <span class="cert-badge badge-trophy">
+                <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                Juara 3
+              </span>
+              <span class="mono-label">24 JUNI 2026</span>
+            </div>
+            <div>
+              <h3 class="cert-name">LKS Tingkat Sekolah — AI Ecosystem</h3>
+              <p class="cert-issuer">SMK Pertiwi Kuningan</p>
+              <p class="cert-tagline">Apresiasi atas dedikasi, pemikiran kritis, dan keunggulan teknis dalam ekosistem teknologi Kecerdasan Buatan.</p>
+            </div>
+            <div class="cert-footer-meta">
+              <span class="mono-label cert-reg-no">No: 243/I02.16/SMK.PTW/HM/2026</span>
+              <div class="cert-tags">
+                <span class="tag-pill">LKS SMK</span>
+                <span class="tag-pill">AI Ecosystem</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Certificate 2: Juara Harapan 1 AI EDA for Computer Vision -->
+        <article class="cert-card" data-category="prestasi" data-cert="ai-eda" tabindex="0" role="button" aria-label="Lihat detail Sertifikat Juara Harapan 1 AI EDA for Computer Vision">
+          <div class="cert-preview">
+            <div class="mock-window">
+              <div class="mock-dots">
+                <span></span><span></span><span></span>
+                <span class="mock-window-url">rpl.smkpertiwi.sch.id/eda-cv-award</span>
+              </div>
+              <div class="cert-img-wrapper">
+                <img src="assets/img/certificates/cert-juara-ai-eda-vision.jpg" alt="Piagam Juara Harapan 1 AI EDA for Computer Vision — Tri Nur Raafi" class="cert-img" loading="lazy" />
+                <div class="cert-overlay">
+                  <span class="cert-zoom-btn">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+                    Lihat Sertifikat
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="cert-info">
+            <div class="cert-header-meta">
+              <span class="cert-badge badge-medal">
+                <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+                Juara Harapan 1
+              </span>
+              <span class="mono-label">12 MARET 2026</span>
+            </div>
+            <div>
+              <h3 class="cert-name">AI EDA for Computer Vision</h3>
+              <p class="cert-issuer">RPL SMK Pertiwi Kuningan (Kab. Kuningan)</p>
+              <p class="cert-tagline">Kompetisi analisis data eksploratif AI untuk computer vision tingkat pelajar se-Kabupaten Kuningan.</p>
+            </div>
+            <div class="cert-footer-meta">
+              <span class="mono-label cert-reg-no">No: 093/I02.16/SMK.PTW/2026</span>
+              <div class="cert-tags">
+                <span class="tag-pill">Computer Vision</span>
+                <span class="tag-pill">Data Analysis</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Certificate 3: Career Ready 2030 Telkom Indonesia -->
+        <article class="cert-card" data-category="webinar" data-cert="telkom-career" tabindex="0" role="button" aria-label="Lihat detail Sertifikat Telkom Indonesia Career Ready 2030">
+          <div class="cert-preview">
+            <div class="mock-window">
+              <div class="mock-dots">
+                <span></span><span></span><span></span>
+                <span class="mock-window-url">corp-u.telkom.co.id/career-ready-2030</span>
+              </div>
+              <div class="cert-img-wrapper">
+                <img src="assets/img/certificates/cert-telkom-career-ready.jpg" alt="Sertifikat Apresiasi Telkom Indonesia Career Ready 2030 — Tri Nur Raafi" class="cert-img" loading="lazy" />
+                <div class="cert-overlay">
+                  <span class="cert-zoom-btn">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+                    Lihat Sertifikat
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="cert-info">
+            <div class="cert-header-meta">
+              <span class="cert-badge badge-industry">
+                <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                Webinar &amp; Industri
+              </span>
+              <span class="mono-label">12 SEPT 2026</span>
+            </div>
+            <div>
+              <h3 class="cert-name">Career Ready 2030: Innovation Day #2</h3>
+              <p class="cert-issuer">Telkom Corporate University &amp; Danantara</p>
+              <p class="cert-tagline">Wawasan kesiapan industri digital, inovasi layanan teknologi, dan kesiapan karir 2030.</p>
+            </div>
+            <div class="cert-footer-meta">
+              <span class="mono-label cert-reg-no">No: Tel.3899/PD.620/TCU-A1011000/2026</span>
+              <div class="cert-tags">
+                <span class="tag-pill">Digital Services</span>
+                <span class="tag-pill">Innovation</span>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="section-bottom-note">
+        <span>Klik kartu sertifikat di atas untuk melihat piagam resolusi penuh &amp; info verifikasi resmi.</span>
+        <a href="#top" class="link-arrow">Back to top ↑</a>
+      </div>
+    </section>
+
+    <!-- INTERACTIVE CERTIFICATE MODAL -->
+    <dialog id="certificateModal" class="cert-modal">
+      <div class="cert-modal-container">
+        <div class="cert-modal-header">
+          <div class="cert-modal-header-left">
+            <span class="status-badge" style="background:rgba(52,211,153,0.12); color:var(--status-green); border-color:rgba(52,211,153,0.3);">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Verified Credential</span>
+            </span>
+            <span id="certModalCategory" class="mono-label">PRESTASI &amp; KOMPETISI</span>
+          </div>
+          <button id="closeCertModalBtn" class="icon-btn" aria-label="Tutup preview sertifikat">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+        </div>
+
+        <div class="cert-modal-body">
+          <div class="cert-modal-image-frame">
+            <img id="certModalImg" src="" alt="Preview Sertifikat Penuh" class="cert-modal-image" />
+          </div>
+
+          <div class="cert-modal-meta-grid">
+            <div class="cert-meta-item">
+              <span class="mono-label">NAMA SERTIFIKAT / PENGHARGAAN</span>
+              <h3 id="certModalTitle" class="cert-meta-title">Nama Sertifikat</h3>
+            </div>
+            <div class="cert-meta-item">
+              <span class="mono-label">PENYELENGGARA / PENERBIT</span>
+              <p id="certModalIssuer" class="cert-meta-value">-</p>
+            </div>
+            <div class="cert-meta-item">
+              <span class="mono-label">NOMOR REGISTRASI RESMI</span>
+              <p id="certModalNumber" class="cert-meta-mono">-</p>
+            </div>
+            <div class="cert-meta-item">
+              <span class="mono-label">TANGGAL &amp; LOKASI</span>
+              <p id="certModalDate" class="cert-meta-value">-</p>
+            </div>
+          </div>
+
+          <div class="cert-modal-desc-box">
+            <span class="mono-label">DESKRIPSI RESMI &amp; PENCAPAIAN</span>
+            <p id="certModalDesc" class="cert-modal-desc-text">-</p>
+          </div>
+
+          <div class="cert-modal-footer">
+            <a id="certModalDownloadBtn" href="" target="_blank" rel="noopener noreferrer" class="btn-primary">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle;margin-right:6px;"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              <span>Buka Gambar Ukuran Asli ↗</span>
+            </a>
+            <button id="certModalCloseBottomBtn" class="btn-explore" type="button">Tutup Preview</button>
+          </div>
+        </div>
+      </div>
+    </dialog>
+
+    <!-- 04 / PLAYGROUND MINI SECTION -->
+    <section id="playground" class="playground-section container">
+      <div class="section-topbar">
+        <span class="mono-label"><span class="accent-dot">●</span> MINI LAB &amp; TOOLS</span>
+        <span class="mono-label">04 / PLAYGROUND</span>
+      </div>
+
+      <div class="playground-box">
+        <div class="playground-info">
+          <span class="mono-tag">INTERACTIVE WIDGET</span>
+          <h2>AI Token &amp; Word Estimator</h2>
+          <p>Eksperimen kecil buat ngitung estimasi jumlah kata, karakter, dan pemakaian <em>token</em> LLM secara instan sebelum kirim <em>prompt</em> ke API.</p>
+        </div>
+
+        <div class="token-calculator">
+          <textarea id="promptInput" rows="4" placeholder="Ketik atau paste prompt lu di sini buat cek estimasi token...">Buatkan skema database MySQL untuk aplikasi pengaduan fasilitas sekolah lengkap dengan relasi tabel user, kategori, dan tiket laporan.</textarea>
+          <div class="token-stats">
+            <div class="stat-pill">
+              <small>Kata (Words)</small>
+              <strong id="wordCount">0</strong>
+            </div>
+            <div class="stat-pill">
+              <small>Karakter</small>
+              <strong id="charCount">0</strong>
+            </div>
+            <div class="stat-pill highlight">
+              <small>Estimasi Token (~)</small>
+              <strong id="tokenCount">0</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 / CONTACT SECTION -->
+    <section id="contact" class="contact-section container">
+      <div class="contact-card">
+        <div class="section-topbar">
+          <span class="mono-label"><span class="accent-dot">●</span> GOOD THINGS START WITH A HELLO</span>
+          <span class="mono-label">05 / LET’S CONNECT</span>
+        </div>
+
+        <div class="contact-body">
+          <span class="contact-spark" aria-hidden="true">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2 7 7 2-7 2-2 7-2-7-7-2 7-2z"></path></svg>
+          </span>
+          <p class="mono-label">A NEW PROJECT. A SYSTEM IDEA. A SIMPLE HELLO.</p>
+          <h2 class="contact-title">
+            Have something<br />
+            <em class="serif-italic">in mind?</em>
+          </h2>
+          <p class="contact-desc">
+            Yuk ubah ide itu jadi web atau sistem yang beneran jalan.<br />
+            Desain terstruktur, kode yang bersih, dan ruang buat eksplorasi.
+          </p>
+
+          <div class="contact-cta-group">
+            <span class="btn-primary btn-large btn-whatsapp-soon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="flex-shrink:0;"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm.01 1.67c2.2 0 4.26.86 5.82 2.41a8.19 8.19 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24zm4.52 11.66c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.02-1.24-.75-.67-1.25-1.5-1.4-1.75-.15-.25-.02-.39.11-.51.11-.11.25-.29.38-.44.13-.15.17-.25.25-.42.08-.17.04-.32-.02-.45-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.77 2.7 4.29 3.79.6.26 1.07.41 1.44.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.11-.22-.18-.47-.3z"/></svg>
+              Coming Soon WhatsApp
+            </span>
+          </div>
+
+          <div class="social-links">
+            <a href="https://github.com/trinurraafi" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+            <a href="https://instagram.com/_raafi005" target="_blank" rel="noopener noreferrer">Instagram ↗</a>
+            <a href="#work">Lihat Proyek Lagi ↑</a>
+          </div>
+        </div>
+
+        <footer class="site-footer">
+          <a href="#top" class="footer-brand">
+            <strong>Tri Nur Raafi</strong>
+            <span>WEB DEVELOPER &amp; MAKER · KUNINGAN, ID</span>
+          </a>
+          <a href="#top" class="back-top-link">Back to the clouds ↑</a>
+        </footer>
+      </div>
+    </section>
+  </main>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
